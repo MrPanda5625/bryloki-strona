@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breloki 3D — Druk 3D breloków spersonalizowanych</title>
+    <meta name="description" content="Drukujemy breloki 3D na zamówienie — szybkie prototypy, personalizacja, niskie ceny. Sprawdź galerię i zamów swój brelok.">
+    
+    <meta property="og:title" content="Breloki 3D — Druk 3D breloków spersonalizowanych">
+    <meta property="og:description" content="Drukujemy breloki 3D na zamówienie — szybkie prototypy, personalizacja, niskie ceny. Sprawdź galerię i zamów swój brelok.">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630/0f1724/ff7a00?text=Breloki+3D">
+    <meta property="og:type" content="website">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* Zmienne CSS i reset */
+        :root {
+            --color-dark-blue: #0f1724; /* Header, Tła sekcji */
+            --color-accent-orange: #ff7a00; /* Akcenty, CTA */
+            --color-light-bg: #f7f9fb; /* Główne tło */
+            --color-text-dark: #333;
+            --color-text-light: #fff;
+            --spacing-unit: 1rem;
+            --max-width: 1200px;
+        }
+
+        /* Reset i Podstawowa typografia */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--color-text-dark);
+            background-color: var(--color-light-bg);
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4 {
+            line-height: 1.2;
+            margin-bottom: var(--spacing-unit);
+            font-weight: 700;
+        }
+
+        /* Globalne kontener i sekcje */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        section {
+            padding: calc(4 * var(--spacing-unit)) 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        /* Przyciski (CTA) */
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--color-accent-orange);
+            color: var(--color-text-light);
+            text-decoration: none;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            text-align: center;
+        }
+
+        .btn:hover, .btn:focus {
+            background-color: #e66c00; /* Ciemniejszy pomarańcz */
+            transform: translateY(-2px);
+            outline: 2px solid var(--color-accent-orange);
+            outline-offset: 2px;
+        }
+
+        .btn-secondary {
+            background-color: var(--color-text-dark);
+        }
+
+        .btn-secondary:hover, .btn-secondary:focus {
+            background-color: #555;
+        }
+        
+        /* Accessibility: focus visible */
+        a:focus, button:focus, input:focus, select:focus, textarea:focus {
+            outline: 2px solid var(--color-accent-orange);
+            outline-offset: 2px;
+        }
+
+        /* NAGŁÓWEK / HEADER */
+        .header {
+            background-color: var(--color-dark-blue);
+            color: var(--color-text-light);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo a {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--color-accent-orange);
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .nav-menu {
+            display: none; /* Ukryj na mobile */
+        }
+
+        .nav-menu a {
+            color: var(--color-text-light);
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--color-accent-orange);
+        }
+
+        .menu-toggle {
+            display: block; /* Pokaż na mobile */
+            background: none;
+            border: none;
+            color: var(--color-text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        /* Stylizacja dla otwartego menu mobilnego */
+        .nav-menu.active {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: var(--color-dark-blue);
+            padding: 1rem 0;
+            box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-menu.active a {
+            margin: 0.5rem 1rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* SEKCJA HERO */
+        .hero {
+            background-color: #fff;
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--color-dark-blue);
+            margin-bottom: 0.5rem;
+            font-weight: 900;
+        }
+
+        .hero-text p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--color-text-dark);
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .hero-image {
+            width: 80%;
+            max-width: 400px;
+            height: 250px;
+            background-color: #ccc; /* Placeholder */
+            border-radius: 8px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--color-dark-blue);
+            font-size: 1.2rem;
+            text-align: center;
+            background-image: url('https://via.placeholder.com/600x400/ff7a00/0f1724?text=Brelok+3D+-+Wizualizacja');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* SEKCJA OFERTA */
+        .offer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .offer-item {
+            padding: 1.5rem;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid var(--color-accent-orange);
+        }
+
+        .offer-item h3 {
+            color: var(--color-dark-blue);
+        }
+
+        .icon-svg {
+            width: 50px;
+            height: 50px;
+            fill: var(--color-accent-orange);
+            margin-bottom: 1rem;
+        }
+
+        /* SEKCJA PRODUKTY */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .product-card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-img-placeholder {
+            width: 100%;
+            height: 200px;
+            background-color: var(--color-light-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: #666;
+            background-image: url('https://via.placeholder.com/300x200/eee/333?text=Brelok+3D');
+            background-size: cover;
+            background-position: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-info h4 {
+            color: var(--color-dark-blue);
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-info p {
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .product-details {
+            font-size: 0.85rem;
+            color: #555;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .product-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--color-accent-orange);
+            margin-top: auto; /* Wypchnięcie na dół */
+            margin-bottom: 1rem;
+        }
+        
+        /* KOSZYK - Sidebar/Modal */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            max-width: 400px;
+            height: 100%;
+            background-color: #fff;
+            box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+            z-index: 200;
+            padding: 2rem 1rem;
+            overflow-y: auto;
+        }
+
+        .cart-sidebar.open {
+            transform: translateX(0);
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--color-dark-blue);
+        }
+        
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .cart-item-details {
+            flex-grow: 1;
+        }
+
+        .cart-item-details strong {
+            display: block;
+            color: var(--color-dark-blue);
+        }
+        
+        .cart-qty, .cart-remove {
+            margin-left: 1rem;
+        }
+        
+        .cart-qty input {
+            width: 50px;
+            padding: 0.3rem;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .cart-summary {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 2px solid var(--color-dark-blue);
+        }
+
+        .cart-summary div {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        /* Sekcja Zamówienia */
+        .checkout-step {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Sekcja Galeria / Lightbox */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .gallery-img-placeholder {
+            width: 100%;
+            height: 150px;
+            background-color: #ccc;
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-dark-blue);
+            font-size: 0.8rem;
+            background-image: url('https://via.placeholder.com/300x300/f0f0f0/333?text=Brelok+Galeria');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .gallery-item:hover .gallery-img-placeholder {
+            transform: scale(1.05);
+        }
+
+        /* Modal / Lightbox */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 300;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        /* Formularze */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--color-dark-blue);
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        .material-options {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .material-options label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        /* SEKCJA O NAS / FAQ */
+        .about-content, .faq-content {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            margin-top: 2rem;
+        }
+        
+        .faq-item {
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .faq-question {
+            font-weight: 600;
+            color: var(--color-dark-blue);
+            cursor: pointer;
+            padding: 0.75rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            padding: 0 0 0.75rem 0;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .faq-answer.open {
+            display: block;
+            opacity: 1;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.active::after {
+            content: '-';
+            transform: rotate(180deg);
+        }
+        
+        /* SEKCJA KONTAKT */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 300px;
+            background-color: #ddd;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        /* STOPKA / FOOTER */
+        .footer {
+            background-color: var(--color-dark-blue);
+            color: #ccc;
+            padding: 3rem 0;
+            font-size: 0.9rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .footer h4 {
+            color: var(--color-accent-orange);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: var(--color-accent-orange);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            fill: #ccc;
+            transition: fill 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            fill: var(--color-accent-orange);
+        }
+
+        /* MEDIA QUERIES - Responsywność (Mobile-first) */
+        @media (min-width: 768px) {
+            .offer-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .hero-content {
+                flex-direction: row;
+                text-align: left;
+            }
+
+            .hero-text {
+                flex: 1;
+            }
+
+            .hero-image {
+                flex: 1;
+                order: 2;
+                max-width: 50%;
+                height: 350px;
+            }
+
+            .hero-text h1 {
+                font-size: 3.5rem;
+            }
+
+            .hero-text p {
+                font-size: 1.25rem;
+            }
+
+            .nav-menu {
+                display: flex; /* Pokaż na desktopie */
+            }
+
+            .menu-toggle {
+                display: none; /* Ukryj na desktopie */
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .hero {
+                padding: 6rem 0;
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header" id="home">
+        <div class="container">
+            <div class="logo">
+                <a href="#home">Breloki 3D</a>
+            </div>
+            <nav class="nav-menu" id="navMenu">
+                <a href="#home">Home</a>
+                <a href="#products">Produkty</a>
+                <a href="#gallery">Galeria</a>
+                <a href="#order">Zamówienie</a>
+                <a href="#about">O nas</a>
+                <a href="#contact">Kontakt</a>
+            </nav>
+            <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navMenu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+        </div>
+    </header>
+
+    <aside class="cart-sidebar" id="cartSidebar" role="dialog" aria-modal="true" aria-labelledby="cartHeader">
+        <div class="cart-header">
+            <h3 id="cartHeader">Twój Koszyk</h3>
+            <button class="cart-close" id="cartClose" aria-label="Zamknij koszyk">&times;</button>
+        </div>
+        <div id="cartItems">
+            <p>Koszyk jest pusty.</p>
+        </div>
+        <div class="cart-summary" id="cartSummary" style="display:none;">
+            <div>
+                <span>Suma:</span>
+                <span id="cartTotal">0.00 zł</span>
+            </div>
+            <button class="btn" style="width: 100%; margin-top: 1rem;" onclick="showOrderForm()">Przejdź do zamówienia</button>
+        </div>
+    </aside>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>Breloki 3D — Twoje pomysły, nasz druk</h1>
+                <p>Od projektu po gotowy brelok — personalizacja, szybkie terminy, trwałe materiały.</p>
+                <a href="#order" class="btn btn-secondary btn-lg">Zamów brelok</a>
+                <button class="btn" style="margin-left: 1rem;" onclick="openCart()">Pokaż koszyk</button>
+            </div>
+            <div class="hero-image" role="img" aria-label="Wizualizacja breloka 3D">
+            </div>
+        </div>
+    </section>
+
+    <section id="offer">
+        <div class="container">
+            <h2 style="text-align: center; color: var(--color-dark-blue);">Co nas wyróżnia?</h2>
+            <div class="offer-grid">
+                <div class="offer-item">
+                    <svg class="icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <h3>Szybki Prototyp</h3>
+                    <p>Drukujemy Twoje projekty w ekspresowym tempie. Gotowy brelok już od 24h (w zależności od skomplikowania projektu+czas wsyłki).</p>
+                </div>
+                <div class="offer-item">
+                    <svg class="icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    <h3>Pełna Personalizacja</h3>
+                    <p>Imię, inicjały, logo, data — dostosuj brelok w 100% do swoich potrzeb.</p>
+                </div>
+                <div class="offer-item">
+                    <svg class="icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="2" rx="1" ry="1"/></svg>
+                    <h3>Zestawy Reklamowe</h3>
+                    <p>Duże zamówienia dla firm i eventów. Atrakcyjne ceny hurtowe i szybka realizacja.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="products">
+        <div class="container">
+            <h2 style="text-align: center; color: var(--color-dark-blue);">Nasze Przykładowe Breloki</h2>
+            <div class="product-grid" id="productGrid">
+                </div>
+        </div>
+    </section>
+
+    <section id="gallery" style="background-color: #f0f3f6;">
+        <div class="container">
+            <h2 style="text-align: center; color: var(--color-dark-blue);">Galeria Realizacji</h2>
+            <div class="gallery-grid" id="galleryGrid">
+                <div class="gallery-item" onclick="openLightbox('https://via.placeholder.com/700x500/0f1724/ff7a00?text=Brelok+3D+Detale+1')">
+                    <div class="gallery-img-placeholder" style="background-image: url('https://via.placeholder.com/300x300/f0f0f0/333?text=Brelok+1')" role="img" aria-label="Zdjęcie breloka 1"></div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox('https://via.placeholder.com/700x500/ff7a00/0f1724?text=Brelok+3D+Detale+2')">
+                    <div class="gallery-img-placeholder" style="background-image: url('https://via.placeholder.com/300x300/f0f0f0/333?text=Brelok+2')" role="img" aria-label="Zdjęcie breloka 2"></div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox('https://via.placeholder.com/700x500/0f1724/ff7a00?text=Brelok+3D+Detale+3')">
+                    <div class="gallery-img-placeholder" style="background-image: url('https://via.placeholder.com/300x300/f0f0f0/333?text=Brelok+3')" role="img" aria-label="Zdjęcie breloka 3"></div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox('https://via.placeholder.com/700x500/ff7a00/0f1724?text=Brelok+3D+Detale+4')">
+                    <div class="gallery-img-placeholder" style="background-image: url('https://via.placeholder.com/300x300/f0f0f0/333?text=Brelok+4')" role="img" aria-label="Zdjęcie breloka 4"></div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox('https://via.placeholder.com/700x500/0f1724/ff7a00?text=Brelok+3D+Detale+5')">
+                    <div class="gallery-img-placeholder" style="background-image: url('https://via.placeholder.com/300x300/f0f0f0/333?text=Brelok+5')" role="img" aria-label="Zdjęcie breloka 5"></div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox('https://via.placeholder.com/700x500/ff7a00/0f1724?text=Brelok+3D+Detale+6')">
+                    <div class="gallery-img-placeholder" style="background-image: url('https://via.placeholder.com/300x300/f0f0f0/333?text=Brelok+6')" role="img" aria-label="Zdjęcie breloka 6"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="galleryModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+        <span class="modal-close" onclick="closeLightbox()" role="button" aria-label="Zamknij podgląd">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" alt="Powiększone zdjęcie breloka">
+        </div>
+    </div>
+
+    <section id="order">
+        <div class="container">
+            <h2 style="text-align: center; color: var(--color-dark-blue);">Realizacja Zamówienia</h2>
+
+            <div class="checkout-step" id="stepCartSummary">
+                <h3>Krok 1: Podsumowanie Koszyka</h3>
+                <div id="checkoutCartItems">
+                    <p style="text-align: center;">Twój koszyk jest pusty. Dodaj produkty, aby przejść do zamówienia.</p>
+                </div>
+                <div id="checkoutCartSummary" style="margin-top: 1rem; font-weight: 700; font-size: 1.2rem;">Suma: 0.00 zł</div>
+                <button class="btn btn-secondary" style="margin-top: 1rem;" onclick="showOrderForm(true)">Przejdź do Danych i Wysyłki</button>
+            </div>
+            
+            <div class="checkout-step" id="stepShippingForm" style="display:none;">
+                <h3>Krok 2: Dane i Wysyłka</h3>
+                <!-- <form id="orderForm" action="https://formsubmit.co/printk3ychains3d@gmail.com" method="POST" target="_blank"> -->
+                <form id="orderForm" action="https://formsubmit.co/printk3ychains3d@gmail.com" method="POST" target="_blank" data-static>
+                    <input type="hidden" name="_next" value="[URL_TWOJEJ_STRONY]#order">
+                    <input type="hidden" name="_subject" value="NOWE ZAMÓWIENIE BRELOKI 3D!">
+                    <input type="hidden" name="_template" value="table">
+                    <div class="form-group">
+                        <label for="fullName">Imię i nazwisko*</label>
+                        <input type="text" id="fullName" name="fullName" required placeholder="Jan Kowalski">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail*</label>
+                        <input type="email" id="email" name="email" required placeholder="jan.kowalski@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefon</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+48 123 456 789">
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Adres wysyłki*</label>
+                        <textarea id="address" name="address" required placeholder="Ul. Przykładowa 1/2, 00-001 Miasto"></textarea>
+                    </div>
+
+                    <h4 style="margin-top: 2rem;">Szczegóły breloka na zamówienie (jeśli nie wybrano z listy produktów)</h4>
+                    <div class="form-group">
+                        <label for="customMaterial">Preferowany materiał</label>
+                        <select id="customMaterial" name="customMaterial">
+                            <option value="">Wybierz materiał (opcjonalnie)</option>
+                            <option value="PLA">PLA (Ekologiczny)</option>
+                            <option value="PETG">PETG (Trwały)</option>
+                            <option value="Resin">Żywica (Detale)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="customColor">Preferowany kolor</label>
+                        <input type="text" id="customColor" name="customColor" placeholder="Np. Ciemny Niebieski, Pomarańczowy, Matowa Czerń">
+                    </div>
+                    <div class="form-group">
+                        <label for="customQuantity">Ilość</label>
+                        <input type="number" id="customQuantity" name="customQuantity" min="1" value="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="customFile">Plik/Model (do druku) / Opis projektu</label>
+                        <input type="file" id="customFile" name="customFile" accept=".stl,.obj,.3mf">
+                        <p style="font-size: 0.8rem; color: #666; margin-top: 0.5rem;">Akceptowane formaty: .stl, .obj, .3mf. Możesz też wpisać tu szczegółowy opis swojego pomysłu.</p>
+                    </div>
+                    
+                    <button type="submit" class="btn" style="width: 100%; margin-top: 1rem;">Potwierdź i Wyślij Zamówienie</button>
+                </form>
+            </div>
+            
+            <div class="checkout-step" id="stepConfirmation" style="display:none; text-align: center;">
+                <h3 style="color: var(--color-accent-orange);">Dziękujemy za zamówienie! 🎉</h3>
+                <p>Otrzymaliśmy Twoje zamówienie. Skontaktujemy się w ciągu 24 godzin w celu potwierdzenia szczegółów i terminu realizacji.</p>
+                <h4 style="margin-top: 2rem;">Podsumowanie zamówienia:</h4>
+                <div id="orderConfirmationDetails" style="text-align: left; margin: 0 auto; max-width: 500px; padding: 1rem; border: 1px dashed #ccc; border-radius: 4px;">
+                    </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="about" style="background-color: #f0f3f6;">
+        <div class="container">
+            <h2 style="text-align: center; color: var(--color-dark-blue);">O nas</h2>
+            <div class="about-content">
+                <p>Nasza mała firma powstała z pasji do nowoczesnej technologii i rzemiosła. Od 5 lat specjalizujemy się w druku 3D, koncentrując się na precyzyjnych i trwałych brelokach na indywidualne zamówienie.</p>
+                <p>Wierzymy, że każdy przedmiot powinien być unikalny. U nas nie dostaniesz masowej produkcji, lecz spersonalizowany design, który przetrwa lata. Pracujemy szybko, ale z dbałością o każdy detal.</p>
+                <h4 style="margin-top: 1.5rem; color: var(--color-accent-orange);">Eko-druk: Nasza odpowiedzialność</h4>
+                <p>Większość naszych breloków drukujemy z **PLA**, czyli **polilaktydu** – materiału biodegradowalnego, wytwarzanego ze skrobi kukurydzianej. Dbamy o to, by personalizacja szła w parze z ekologią.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq">
+        <div class="container">
+            <h2 style="text-align: center; color: var(--color-dark-blue);">Najczęściej Zadawane Pytania (FAQ)</h2>
+            <div class="faq-content" id="faqContent">
+                <div class="faq-item">
+                    <div class="faq-question" tabindex="0" role="button" aria-expanded="false" aria-controls="faq-a1">Jaki jest czas realizacji zamówienia?</div>
+                    <div class="faq-answer" id="faq-a1" aria-hidden="true"><p>Standardowe zamówienia (pojedyncze sztuki) realizujemy w ciągu 2-3 dni roboczych. Większe zamówienia (powyżej 100 sztuk) wymagają 5-7 dni. Zawsze podajemy dokładny termin po akceptacji projektu.</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" tabindex="0" role="button" aria-expanded="false" aria-controls="faq-a2">Z jakich materiałów drukujecie breloki?</div>
+                    <div class="faq-answer" id="faq-a2" aria-hidden="true"><p>Głównie używamy **PLA** (ekologiczny, dobry do detali) i **PETG** (trwały, odporny na temperaturę). Dla bardzo małych i skomplikowanych wzorów stosujemy również druk z **żywicy** (wysoka precyzja).</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" tabindex="0" role="button" aria-expanded="false" aria-controls="faq-a3">Czy mogę zamówić brelok z moim logo?</div>
+                    <div class="faq-answer" id="faq-a3" aria-hidden="true"><p>Oczywiście! To nasza specjalność. Wystarczy, że prześlesz nam plik graficzny (wektorowy lub wysokiej rozdzielczości) w formularzu zamówienia, a my przygotujemy projekt 3D.</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" tabindex="0" role="button" aria-expanded="false" aria-controls="faq-a4">Jaki jest minimalny wymiar breloka?</div>
+                    <div class="faq-answer" id="faq-a4" aria-hidden="true"><p>Technicznie minimalny wymiar to ok. 10x10x2 mm, ale dla estetyki i trwałości rekomendujemy minimum 40x20x4 mm. W razie wątpliwości skontaktuj się z nami!</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" tabindex="0" role="button" aria-expanded="false" aria-controls="faq-a5">Czy oferujecie wysyłkę za granicę?</div>
+                    <div class="faq-answer" id="faq-a5" aria-hidden="true"><p>Tak, realizujemy wysyłki na terenie całej Unii Europejskiej. Koszty wysyłki są kalkulowane indywidualnie w zależności od kraju docelowego i wagi zamówienia.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 style="text-align: center; color: var(--color-dark-blue);">Kontakt i Lokalizacja</h2>
+            <div class="contact-grid">
+                <div class="contact-form-container">
+                    <h3>Napisz do nas</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="contactName">Imię i nazwisko*</label>
+                            <input type="text" id="contactName" required placeholder="Twoje imię">
+                        </div>
+                        <div class="form-group">
+                            <label for="contactEmail">E-mail*</label>
+                            <input type="email" id="contactEmail" required placeholder="kontakt@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="contactMessage">Wiadomość*</label>
+                            <textarea id="contactMessage" rows="5" required placeholder="Opisz swoje zapytanie lub pomysł na brelok..."></textarea>
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%;">Wyślij wiadomość</button>
+                        <p id="contactMessageStatus" style="margin-top: 1rem; color: var(--color-dark-blue); font-weight: 600; display: none;">Dziękujemy za kontakt! Odpowiemy wkrótce.</p>
+                    </form>
+                </div>
+                <div>
+                    <h3>Znajdź nas</h3>
+                    <div class="map-placeholder" role="img" aria-label="Lokalizacja firmy na mapie">
+                        <p>Placeholder Mapy Google / Lokalizacja<br>42-200 Częstochowa, ul. Drukarska 3</p>
+                    </div>
+                    <p style="margin-top: 1rem;">**Adres:** ul. Drukarska 3, 42-200 Częstochowa (Siedziba firmy - odbiór osobisty tylko po umówieniu)</p>
+                    <p>**Telefon:** +48 782 008 007</p>
+                    <p>**Telefon:** +48 512 062 842</p>
+                    <p>**E-mail:** printk3ychains3d@gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <div class="logo"><a href="#home">Breloki 3D</a></div>
+                <p style="margin-top: 1rem;">Spersonalizowany druk 3D. Jakość i design w Twojej kieszeni.</p>
+                <p>&copy; 2025 Breloki 3D. Wszelkie prawa zastrzeżone.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Szybkie linki</h4>
+                <a href="#products">Produkty</a>
+                <a href="#gallery">Galeria</a>
+                <a href="#order">Zamówienie</a>
+                <a href="#faq">FAQ</a>
+            </div>
+            <div class="footer-col">
+                <h4>Informacje</h4>
+                <a href="#" target="_blank">Regulamin</a>
+                <a href="#" target="_blank">Polityka Prywatności</a>
+                <a href="#contact">Kontakt</a>
+                <a href="#about">O nas</a>
+            </div>
+            <div class="footer-col">
+                <h4>Social Media</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.815c-3.21 0-4.185 1.549-4.185 4.333v2.667z"/></svg>
+                    </a>
+                    <a href="#" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                    </a>
+                    <a href="#" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dane produktów (zgodnie z instrukcją)
+        const PRODUCTS = [
+            {"id":1,"name":"Brelok Minimal","desc":"Prosty, elegancki brelok z inicjałami.","material":["PLA","Żywica"],"size":"40×20×6 mm","price":19},
+            {"id":2,"name":"Brelok Logo","desc":"Brelok z tłoczonym logo firmy.","material":["PLA","PETG"],"size":"45×25×6 mm","price":39},
+            {"id":3,"name":"Brelok Figurka","desc":"Mini figurka 3D — personalizowana.","material":["Żywica"],"size":"35×30×25 mm","price":59},
+            {"id":4,"name":"Brelok Geo","desc":"Geometryczny, nowoczesny design.","material":["PLA"],"size":"50×18×5 mm","price":24},
+            {"id":5,"name":"Brelok Opiekun","desc":"Brelok z miejscem na numer telefonu.","material":["PLA","PETG"],"size":"55×25×6 mm","price":29},
+            {"id":6,"name":"Zestaw 3 szt.","desc":"Zestaw trzech różnych breloków w niższej cenie.","material":["PLA"],"size":"różne","price":69}
+        ];
+
+        let cart = JSON.parse(localStorage.getItem('brelokiCart')) || [];
+
+        /**
+         * Funkcja do zapisu koszyka w Local Storage
+         */
+        const saveCart = () => {
+            localStorage.setItem('brelokiCart', JSON.stringify(cart));
+            renderCart(); // Odśwież widok po zapisie
+        };
+
+        /**
+         * Renderuje produkty w sekcji PRODUKTY
+         */
+        const renderProducts = () => {
+            const grid = document.getElementById('productGrid');
+            grid.innerHTML = PRODUCTS.map(product => `
+                <div class="product-card">
+                    <div class="product-img-placeholder" style="background-image: url('https://via.placeholder.com/300x200/${product.id % 2 === 0 ? '0f1724' : 'ff7a00'}/${product.id % 2 === 0 ? 'ff7a00' : '0f1724'}?text=${product.name.replace(/\s/g, '+')}')" role="img" aria-label="Wizualizacja breloka ${product.name}"></div>
+                    <div class="product-info">
+                        <h4>${product.name}</h4>
+                        <p>${product.desc}</p>
+                        <div class="product-details">
+                            <strong>Materiały:</strong> ${product.material.join(', ')}<br>
+                            <strong>Wymiary:</strong> ${product.size}
+                        </div>
+                        <div class="product-price">${product.price.toFixed(2)} zł</div>
+                        <button class="btn" onclick="addToCart(${product.id})">Dodaj do koszyka</button>
+                    </div>
+                </div>
+            `).join('');
+        };
+
+        /**
+         * Dodaje produkt do koszyka
+         * @param {number} productId - ID produktu
+         */
+        const addToCart = (productId) => {
+            const product = PRODUCTS.find(p => p.id === productId);
+            if (!product) return;
+
+            const existingItem = cart.find(item => item.id === productId);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+
+            saveCart();
+            openCart(); // Otwórz koszyk po dodaniu
+        };
+
+        /**
+         * Zmienia ilość produktu w koszyku
+         * @param {number} productId - ID produktu
+         * @param {number} newQuantity - Nowa ilość
+         */
+        const updateQuantity = (productId, newQuantity) => {
+            const quantity = parseInt(newQuantity);
+            if (isNaN(quantity) || quantity <= 0) {
+                removeFromCart(productId);
+            } else {
+                const item = cart.find(item => item.id === productId);
+                if (item) {
+                    item.quantity = quantity;
+                    saveCart();
+                }
+            }
+        };
+
+        /**
+         * Usuwa produkt z koszyka
+         * @param {number} productId - ID produktu
+         */
+        const removeFromCart = (productId) => {
+            cart = cart.filter(item => item.id !== productId);
+            saveCart();
+        };
+
+        /**
+         * Renderuje zawartość koszyka w sidebarze i w sekcji zamówienia
+         */
+        const renderCart = () => {
+            const cartItemsContainer = document.getElementById('cartItems');
+            const checkoutItemsContainer = document.getElementById('checkoutCartItems');
+            const cartTotalSpan = document.getElementById('cartTotal');
+            const checkoutCartSummaryDiv = document.getElementById('checkoutCartSummary');
+            const cartSummaryDiv = document.getElementById('cartSummary');
+            
+            let total = 0;
+            
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p style="text-align: center;">Koszyk jest pusty.</p>';
+                checkoutItemsContainer.innerHTML = '<p style="text-align: center; color: #666;">Brak produktów w koszyku.</p>';
+                cartSummaryDiv.style.display = 'none';
+                checkoutCartSummaryDiv.textContent = 'Suma: 0.00 zł';
+                // Opcjonalnie: ukryj przycisk do zamówienia
+                document.querySelector('#stepCartSummary button').style.display = 'none';
+            } else {
+                const cartHtml = cart.map(item => {
+                    const itemTotal = item.price * item.quantity;
+                    total += itemTotal;
+                    return `
+                        <div class="cart-item">
+                            <div class="cart-item-details">
+                                <strong>${item.name}</strong>
+                                <span>${item.quantity} x ${item.price.toFixed(2)} zł = ${itemTotal.toFixed(2)} zł</span>
+                            </div>
+                            <div class="cart-qty">
+                                <input type="number" min="1" value="${item.quantity}" 
+                                    onchange="updateQuantity(${item.id}, this.value)" aria-label="Ilość ${item.name}">
+                            </div>
+                            <button class="cart-remove btn-secondary" onclick="removeFromCart(${item.id})" aria-label="Usuń ${item.name}" style="padding: 0.25rem 0.5rem; background: none; color: #999;">&times;</button>
+                        </div>
+                    `;
+                }).join('');
+
+                cartItemsContainer.innerHTML = cartHtml;
+                checkoutItemsContainer.innerHTML = cartHtml; // Używamy tego samego HTML w podsumowaniu
+                cartTotalSpan.textContent = total.toFixed(2) + ' zł';
+                checkoutCartSummaryDiv.textContent = `Suma całkowita: ${total.toFixed(2)} zł`;
+                cartSummaryDiv.style.display = 'block';
+                document.querySelector('#stepCartSummary button').style.display = 'block';
+            }
+        };
+
+        // ********** LOGIKA KOSZYKA I ZAMÓWIENIA **********
+
+        /** Otwiera sidebar koszyka */
+        const openCart = () => {
+            document.getElementById('cartSidebar').classList.add('open');
+            document.getElementById('cartSidebar').setAttribute('aria-hidden', 'false');
+        };
+
+        /** Zamyka sidebar koszyka */
+        const closeCart = () => {
+            document.getElementById('cartSidebar').classList.remove('open');
+            document.getElementById('cartSidebar').setAttribute('aria-hidden', 'true');
+        };
+        
+        // Event Listenery dla Koszyka
+        document.getElementById('cartClose').addEventListener('click', closeCart);
+
+        /**
+         * Pokazuje formularz zamówienia, ukrywając podsumowanie koszyka
+         */
+        const showOrderForm = (fromButton = false) => {
+            if (fromButton && cart.length === 0) {
+                alert('Proszę najpierw dodać produkty do koszyka!');
+                return;
+            }
+            closeCart();
+            document.getElementById('stepCartSummary').style.display = 'none';
+            document.getElementById('stepShippingForm').style.display = 'block';
+            document.getElementById('stepConfirmation').style.display = 'none';
+            // Przewiń do sekcji zamówienia
+            document.getElementById('order').scrollIntoView({ behavior: 'smooth' });
+        };
+        
+        // ********** USUNIĘTO FUNKCJĘ BLOKUJĄCĄ WYSYŁKĘ FORMULARZA **********
+        // Strona będzie wysyłać formularz bezpośrednio do Formsubmit.co.
+        
+        // ********** LOGIKA GŁÓWNA **********
+        
+        /**
+         * Obsługa menu mobilnego
+         */
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            const menu = document.getElementById('navMenu');
+            const isExpanded = this.getAttribute('aria-expanded') === 'true' || false;
+            
+            menu.classList.toggle('active');
+            this.setAttribute('aria-expanded', !isExpanded);
+        });
+
+        // Zamknięcie menu po kliknięciu linku na mobile
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                const menu = document.getElementById('navMenu');
+                if (menu.classList.contains('active')) {
+                    document.getElementById('menuToggle').click();
+                }
+            });
+        });
+
+        /**
+         * Obsługa FAQ (Accordion)
+         */
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isActive = question.classList.contains('active');
+
+                // Zamykanie innych
+                document.querySelectorAll('.faq-question.active').forEach(q => {
+                    if (q !== question) {
+                        q.classList.remove('active');
+                        q.nextElementSibling.classList.remove('open');
+                        q.setAttribute('aria-expanded', 'false');
+                        q.nextElementSibling.setAttribute('aria-hidden', 'true');
+                    }
+                });
+
+                // Otwieranie/Zamykanie aktualnego
+                if (!isActive) {
+                    question.classList.add('active');
+                    answer.classList.add('open');
+                    question.setAttribute('aria-expanded', 'true');
+                    answer.setAttribute('aria-hidden', 'false');
+                } else {
+                    question.classList.remove('active');
+                    answer.classList.remove('open');
+                    question.setAttribute('aria-expanded', 'false');
+                    answer.setAttribute('aria-hidden', 'true');
+                }
+            });
+             // Umożliwienie aktywacji za pomocą klawisza Enter
+            question.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    question.click();
+                }
+            });
+        });
+        
+        // ********** LOGIKA GALERII (LIGHTBOX) **********
+        const modal = document.getElementById('galleryModal');
+        const modalImage = document.getElementById('modalImage');
+
+        const openLightbox = (imgSrc) => {
+            modal.style.display = 'block';
+            modal.setAttribute('aria-hidden', 'false');
+            modalImage.src = imgSrc;
+            document.body.style.overflow = 'hidden'; // Zablokuj scroll
+        };
+
+        const closeLightbox = () => {
+            modal.style.display = 'none';
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = ''; // Przywróć scroll
+        };
+
+        // Zamykanie modala po kliknięciu poza obrazem
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                closeLightbox();
+            }
+        });
+        
+        // Zamykanie modala po naciśnięciu ESC
+        window.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && modal.style.display === 'block') {
+                closeLightbox();
+            }
+        });
+
+        // ********** LOGIKA KONTAKTU **********
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const statusDiv = document.getElementById('contactMessageStatus');
+            
+            // Symulacja wysyłki
+            setTimeout(() => {
+                statusDiv.style.display = 'block';
+                this.reset();
+                // Ukryj komunikat po 5 sekundach
+                setTimeout(() => {
+                    statusDiv.style.display = 'none';
+                }, 5000);
+            }, 500);
+            
+            // Komentarz dev-friendly: Tutaj nastąpiłoby wywołanie AJAX do endpointu kontaktowego na backendzie.
+        });
+
+
+        // Inicjalizacja po załadowaniu DOM
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+            renderCart();
+            
+            // Domyślne pokazanie sekcji koszyka w zamówieniu (jeśli pusta to komunikat)
+            document.getElementById('stepShippingForm').style.display = 'none';
+            document.getElementById('stepConfirmation').style.display = 'none';
+        });
+
+    </script>
+</body>
+</html>
