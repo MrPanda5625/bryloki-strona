@@ -813,6 +813,7 @@
                 <form id="orderForm" action="https://formsubmit.co/printk3ychains3d@gmail.com" method="POST" target="_blank">
                     <input type="hidden" name="_next" value="[URL_TWOJEJ_STRONY]#order">
                     <input type="hidden" name="_subject" value="NOWE ZAMÓWIENIE BRELOKI 3D!">
+                    <input type="hidden" name="Zawartość Koszyka" id="cartContentInput" value="">
                     <div class="form-group">
                         <label for="fullName">Imię i nazwisko*</label>
                         <input type="text" id="fullName" name="fullName" required placeholder="Jan Kowalski">
@@ -1251,6 +1252,25 @@
             }
         });
 
+        // ********** NOWY KOD - Zbieranie zawartości koszyka **********
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            const cartInput = document.getElementById('cartContentInput');
+            let cartSummary = '';
+    
+            // Zbieranie danych z koszyka do jednego, czytelnego stringa
+            if (cart.length > 0) {
+                // Tworzy tekst, np. "Brelok Minimal x 2; Brelok Logo x 1"
+                cartSummary = cart.map(item => `${item.name} x ${item.quantity} (${item.price.toFixed(2)} zł/szt)`).join('; ');
+            } else {
+            cartSummary = 'BRAK WYBRANYCH PRODUKTÓW Z LISTY';
+            }
+    
+            // Ustawia wartość ukrytego pola, która zostanie wysłana do Formsubmit
+            cartInput.value = cartSummary; 
+        
+            // Ważne: NIE używamy e.preventDefault()! Pozwalamy formularzowi na naturalną wysyłkę.
+        });
+      
         // ********** LOGIKA KONTAKTU **********
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
